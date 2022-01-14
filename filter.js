@@ -167,13 +167,32 @@ export default async function (url, keywords, selectedColor) {
     $target.style.backgroundColor = color + opacity;
   };
 
+//돔 추가 
+const addResultPopup = ($target,result) =>{
+  console.log($target,result);
+  let sentences ='';
+  result.keywords.forEach(key=>{
+    let p = `\n"${key.keyword}" 이(가) 나온 횟수는 ${key.keyCount} 번입니다.\n이 키워드를 가지고 있는 문장들은...\n`;
+    for (let i=0; i<key.keySubstr.length;i++){
+      if(key.keySubstr[i]){
+        p += `${i+1}. ${key.keySubstr[i]}... \n`;
+      } else break;
+    }
+    sentences += p;
+
+  })
+  
+  $target.addEventListener('mouseover',function(){
+    alert(sentences);
+  })
+}
+
   // 최종
   const makeResult = async (url, keywords, selectedColor) => {
     const searchList = makeSearchList(url);
     const resultArr = [];
 
     const allKeywordNum = keywords.length;
-
     if (allKeywordNum > 0) {
       searchList.forEach(async (obj) => {
         obj.target.style.backgroundColor = 'initial';
@@ -199,6 +218,9 @@ export default async function (url, keywords, selectedColor) {
           // 반환할 결과
           result.title = obj.target.textContent;
           resultArr.push(result);
+
+          //클릭시 result 가진 돔 추가
+          addResultPopup(obj.target,result);
         }
       });
     } else {
