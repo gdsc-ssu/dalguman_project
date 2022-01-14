@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="popup.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <img class="logo-img" src="images/gdsc-ssu.png" alt="gdsc-ssu" />
+    <form class="add-form">
+      <input type="text" class="add-form__input" placeholder="필터링할 키워드를 ,(콤마)로 구분해 입력해주세요."/>
+      <button class="add-form__btn">add</button>
+    </form>
+
+    <div class="container"></div>
+    <button id="highlight-btn">find</button>
+    <input type="color" value="#00BFC7" class="color-box" />
+
+    <!-- 키워드별 버튼 -->
+    <div class="keyword-container">
+      <input class="keyword-show__btn" type="button" value="keyword1" />
+      <input class="keyword-show__btn" type="button" value="keyword2" />
+      <input class="keyword-show__btn" type="button" value="keyword3" />
+      <input class="keyword-show__btn" type="button" value="keyword4" />
+    </div>
+
+    <!-- 키워드별로 매핑되는 값 -->
+    <div class="keyword-more-view">
+      <p class="keyword-text">
+        - 타이틀 :<br />
+        - 포함된 키워드 (단어 횟수) : <br />
+        - url : <br />
+        - 키워드 포함 문장 : <br />
+        - 키워드 포함 문장 : <br />
+        - 키워드 포함 문장 : <br />
+        - 키워드 포함 문장 : <br />
+      </p>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
